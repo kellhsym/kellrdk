@@ -243,23 +243,23 @@ mod tests {
     #[test]
     fn install_app_names_enforce_ascii_command_safety() {
         for app_name in [
-            "RustDesk",
-            "RustDesk-2",
+            "kellrdk",
+            "kellrdk-2",
             "A",
             "A-0",
-            "1RustDesk",
-            "_RustDesk",
+            "1kellrdk",
+            "_kellrdk",
             "Rust_Desk",
         ] {
             assert!(validate_install_app_name(app_name).is_ok(), "{app_name}");
         }
-        for app_name in ["", "Rust.Desk", "Rust Desk", "RüstDesk", "RustDesk;touch"] {
+        for app_name in ["", "Rust.Desk", "Rust Desk", "RüstDesk", "kellrdk;touch"] {
             assert!(validate_install_app_name(app_name).is_err(), "{app_name}");
         }
 
         #[cfg(windows)]
-        assert!(validate_install_app_name("-RustDesk").is_ok());
+        assert!(validate_install_app_name("-kellrdk").is_ok());
         #[cfg(target_os = "macos")]
-        assert!(validate_install_app_name("-RustDesk").is_err());
+        assert!(validate_install_app_name("-kellrdk").is_err());
     }
 }

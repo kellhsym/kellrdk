@@ -1,9 +1,9 @@
 #!/bin/bash
 
 #
-# Script to build F-Droid release of RustDesk
+# Script to build F-Droid release of kellrdk
 #
-# Copyright (C) 2024, The RustDesk Authors
+# Copyright (C) 2024, The kellrdk Authors
 #               2024, Vasyl Gello <vasek.gello@gmail.com>
 #
 
@@ -302,12 +302,12 @@ prebuild)
 		fi
 	fi
 
-	# Patch the RustDesk sources
+	# Patch the kellrdk sources
 
 	git apply res/fdroid/patches/*.patch
 
 	# Generate bridge files using `FLUTTER_BRIDGE_VERSION`, which may differ
-	# from the Flutter version used to compile RustDesk library, and restore
+	# from the Flutter version used to compile kellrdk library, and restore
 	# the pubspec later
 
 	# Find first libclang.so and set BRIDGE_LLVM_PATH
@@ -369,7 +369,7 @@ prebuild)
 
 	unset BRIDGE_LLVM_PATH
 
-	# Install Flutter version for RustDesk library build
+	# Install Flutter version for kellrdk library build
 
 	prepare_flutter "${FLUTTER_VERSION}" "${HOME}/flutter"
 

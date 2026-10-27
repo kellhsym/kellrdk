@@ -26,7 +26,7 @@ const APPNAME_RUNTIME_ENV_KEY: &str = "RUSTDESK_APPNAME";
 const SET_FOREGROUND_WINDOW_ENV_KEY: &str = "SET_FOREGROUND_WINDOW";
 
 // The extraction directory follows whatever executable the payload asks for, so a
-// custom client gets its own directory instead of sharing RustDesk's. Falls back to
+// custom client gets its own directory instead of sharing kellrdk's. Falls back to
 // APP_PREFIX when no package is injected, which keeps stock builds unchanged.
 fn app_dir_name(exe: &str) -> String {
     Path::new(&exe.replace('\\', "/"))

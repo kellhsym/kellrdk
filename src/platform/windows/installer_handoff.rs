@@ -167,7 +167,7 @@ mod tests {
             let source = root.join("source !&^@().bat");
             let runner = source.with_extension("bat.dir");
             fs::create_dir_all(&runner).unwrap();
-            let bytes = shortcut_bytes(r"C:\RustDesk.exe", Some("--tray"), None).unwrap();
+            let bytes = shortcut_bytes(r"C:\kellrdk.exe", Some("--tray"), None).unwrap();
             let shortcut =
                 ProtectedInstallFile::new(&root.join("shortcut !&^@().tmp"), &bytes).unwrap();
             let marker = root.join("copied.lnk");

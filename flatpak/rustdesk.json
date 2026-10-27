@@ -1,5 +1,5 @@
 {
-  "id": "com.rustdesk.RustDesk",
+  "id": "com.rustdesk.kellrdk",
   "runtime": "org.freedesktop.Platform",
   "runtime-version": "24.08",
   "sdk": "org.freedesktop.Sdk",
@@ -36,7 +36,7 @@
         },
         {
           "type": "file",
-          "path": "com.rustdesk.RustDesk.metainfo.xml"
+          "path": "com.rustdesk.kellrdk.metainfo.xml"
         }
       ]
     }

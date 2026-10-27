@@ -22,7 +22,7 @@ const kKeyTranslateMode = 'translate';
 const String kPlatformAdditionsIsWayland = "is_wayland";
 const String kPlatformAdditionsIsInstalled = "is_installed";
 const String kPlatformAdditionsIddImpl = "idd_impl";
-const String kPlatformAdditionsRustDeskVirtualDisplays =
+const String kPlatformAdditionskellrdkVirtualDisplays =
     "rustdesk_virtual_displays";
 const String kPlatformAdditionsAmyuniVirtualDisplays =
     "amyuni_virtual_displays";

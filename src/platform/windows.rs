@@ -2019,8 +2019,8 @@ fn get_public_base_dir() -> PathBuf {
 #[inline]
 pub fn get_custom_client_staging_dir() -> PathBuf {
     get_public_base_dir()
-        .join("RustDesk")
-        .join("RustDeskCustomClientStaging")
+        .join("kellrdk")
+        .join("kellrdkCustomClientStaging")
 }
 
 /// Removes the custom client staging directory.
@@ -2029,7 +2029,7 @@ pub fn get_custom_client_staging_dir() -> PathBuf {
 ///
 /// Rationale
 /// - The staging directory only contains a small `custom.txt`, leaving it is harmless.
-/// - Deleting directories under a public location (e.g., C:\\ProgramData\\RustDesk) is
+/// - Deleting directories under a public location (e.g., C:\\ProgramData\\kellrdk) is
 ///   susceptible to TOCTOU attacks if an unprivileged user can replace the path with a
 ///   symlink/junction between checks and deletion.
 ///
@@ -2201,7 +2201,7 @@ pub fn bootstrap() -> bool {
     }
     #[cfg(not(debug_assertions))]
     {
-        // This function will cause `'sciter.dll' was not found neither in PATH nor near the current executable.` when debugging RustDesk.
+        // This function will cause `'sciter.dll' was not found neither in PATH nor near the current executable.` when debugging kellrdk.
         // Only call set_safe_load_dll() on Windows 10 or greater
         if is_win_10_or_greater() {
             set_safe_load_dll()
@@ -3171,11 +3171,11 @@ mod cert {
     use hbb_common::ResultType;
 
     extern "C" {
-        fn DeleteRustDeskTestCertsW();
+        fn DeletekellrdkTestCertsW();
     }
     pub fn uninstall_cert() -> ResultType<()> {
         unsafe {
-            DeleteRustDeskTestCertsW();
+            DeletekellrdkTestCertsW();
         }
         Ok(())
     }
@@ -3280,7 +3280,7 @@ impl Drop for WakeLock {
 // and every miss spawns one more tray icon.
 //
 // The case confirmed in #15689: `run_after_run_cmds()` spawns the tray in the
-// caller's own context, so installing or toggling the service from a RustDesk
+// caller's own context, so installing or toggling the service from a kellrdk
 // that was itself started elevated leaves a high integrity tray behind. A main
 // window started normally afterwards runs at medium integrity and cannot open
 // that process with `PROCESS_QUERY_INFORMATION | PROCESS_VM_READ`. sysinfo then
@@ -3985,7 +3985,7 @@ pub fn handle_service_control() -> Option<std::process::ExitCode> {
         std::process::ExitCode::SUCCESS
     } else {
         eprintln!(
-            "RustDesk service control failed: {}",
+            "kellrdk service control failed: {}",
             std::io::Error::from_raw_os_error(error as i32)
         );
         std::process::ExitCode::FAILURE
@@ -4165,7 +4165,7 @@ pub fn message_box(text: &str) {
         .encode_utf16()
         .chain(std::iter::once(0))
         .collect::<Vec<u16>>();
-    let caption = "RustDesk Output"
+    let caption = "kellrdk Output"
         .encode_utf16()
         .chain(std::iter::once(0))
         .collect::<Vec<u16>>();
@@ -4718,10 +4718,10 @@ fn get_pids_with_args_from_wmic_output<S2: AsRef<str>>(
     // CommandLine=
     // ProcessId=34668
     //
-    // CommandLine="C:\Program Files\RustDesk\RustDesk.exe" --tray
+    // CommandLine="C:\Program Files\kellrdk\kellrdk.exe" --tray
     // ProcessId=13728
     //
-    // CommandLine="C:\Program Files\RustDesk\RustDesk.exe"
+    // CommandLine="C:\Program Files\kellrdk\kellrdk.exe"
     // ProcessId=10136
     let mut pids = Vec::new();
     let mut proc_found = false;
