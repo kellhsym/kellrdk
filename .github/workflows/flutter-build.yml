@@ -124,12 +124,10 @@ jobs:
             rustdesk.sbom.json
 
   generate-bridge:
-    if: false
     needs: [validate-update-metadata-keys]
     uses: ./.github/workflows/bridge.yml
 
   build-RustDeskTempTopMostWindow:
-    if: false
     needs: [validate-update-metadata-keys]
     uses: ./.github/workflows/third-party-RustDeskTempTopMostWindow.yml
     strategy:
@@ -1122,7 +1120,7 @@ jobs:
   publish-signed-update-metadata:
     needs: [build-for-windows-flutter, build-for-windows-sciter]
     runs-on: ubuntu-22.04
-    if: ${{ inputs.upload-artifact && inputs.publish-update-metadata && github.repository == 'rustdesk/rustdesk' }}
+    if: false #if: ${{ inputs.upload-artifact && inputs.publish-update-metadata && github.repository == 'rustdesk/rustdesk' }}
     concurrency:
       group: signed-update-${{ inputs.upload-tag }}
       cancel-in-progress: false
